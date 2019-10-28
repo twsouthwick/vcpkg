@@ -1,0 +1,25 @@
+From 12d0b25fb89581c2d7da2473e0d8c52a1213a492 Mon Sep 17 00:00:00 2001
+From: Taylor Southwick <twsouthwick@outlook.com>
+Date: Sun, 27 Oct 2019 16:10:20 -0700
+Subject: [PATCH 3/3] Remove ICU
+
+---
+ win/makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/win/makefile b/win/makefile
+index 1add3283..64003d1a 100644
+--- a/win/makefile
++++ b/win/makefile
+@@ -17,7 +17,7 @@ ICONV_DIR = c:\iconv-1.9.2.win$(BARCH)
+ 
+ # icu charcter conversion utility
+ # get icu libraries from http://www.icu-project.org
+-HAVE_ICU=1
++HAVE_ICU=0
+ ICU_VER=56
+ ICU_BASE = c:\icu-56.1-vs2015
+ !if $(BARCH) == 32
+-- 
+2.19.1.windows.1
+
