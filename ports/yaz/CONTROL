@@ -2,4 +2,4 @@ Source: yaz
 Version: 5.27.2
 Homepage: https://github.com/indexdata/yaz
 Description: An implementation of z39.50
-Build-Depends: libxml2, libxslt
+Build-Depends: libxml2, libxslt, tcl

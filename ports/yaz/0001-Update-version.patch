@@ -1,0 +1,40 @@
+From ebed9fc33a9eb6ec34e374a1b8504359ce488a6e Mon Sep 17 00:00:00 2001
+From: Taylor Southwick <twsouthwick@outlook.com>
+Date: Mon, 28 Oct 2019 16:04:04 -0700
+Subject: [PATCH] Update version
+
+---
+ include/yaz/{yaz-version.h.in => yaz-version.h} | 7 ++++---
+ 1 file changed, 4 insertions(+), 3 deletions(-)
+ rename include/yaz/{yaz-version.h.in => yaz-version.h} (94%)
+
+diff --git a/include/yaz/yaz-version.h.in b/include/yaz/yaz-version.h
+similarity index 94%
+rename from include/yaz/yaz-version.h.in
+rename to include/yaz/yaz-version.h
+index a8d36c86..471bd6de 100644
+--- a/include/yaz/yaz-version.h.in
++++ b/include/yaz/yaz-version.h
+@@ -35,14 +35,15 @@
+ /** \brief YAZ version as string */
+-#define YAZ_VERSION "@VERSION@"
++#define YAZ_VERSION "5.27.2"
+ 
++/** ($1 * 256 + $2) * 256 + $3 **/
+ /** \brief YAZ version as integer (for comparison purposes) */
+-#define YAZ_VERSIONL 0x@VERSION_HEX@
++#define YAZ_VERSIONL 5
+ 
+ /** \brief YAZ file version for YAZ DLL (resource) */
+-#define YAZ_FILEVERSION @WIN_FILEVERSION@
++#define YAZ_FILEVERSION 5
+ 
+ /** \brief SHA1 ID for YAZ (Git) */
+-#define YAZ_VERSION_SHA1 "@VERSION_SHA1@"
++#define YAZ_VERSION_SHA1 "535923358d47095e038debe24a6f19915e911c1a"
+ 
+ YAZ_BEGIN_CDECL
+ 
+-- 
+2.23.0.windows.1
+
