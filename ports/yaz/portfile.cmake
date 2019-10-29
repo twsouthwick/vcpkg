@@ -12,8 +12,8 @@ vcpkg_from_github(
 
 file(COPY ${CMAKE_CURRENT_LIST_DIR}/CMakeLists.txt DESTINATION ${SOURCE_PATH})
 
-#find_program (TCLSH tclsh REQUIRED)
-set(TCLSH "C:\\Program Files\\Git\\mingw64\\bin\\tclsh.exe")
+vcpkg_acquire_msys(MSYS_ROOT PACKAGES tcl)
+set(TCLSH ${MSYS_ROOT}/usr/bin/tclsh.exe)
 
 list(APPEND ZTCL 
     "z3950v3"
@@ -75,6 +75,32 @@ vcpkg_execute_required_process(
     COMMAND ${TCLSH} ../util/yaz-asncomp -d ill.tcl -i yaz -I../include item-req.asn
     WORKING_DIRECTORY ${SOURCE_PATH}/src
     LOGNAME tcl-item-req-${TARGET_TRIPLET}-rel
+)
+
+vcpkg_execute_required_process(
+    COMMAND ${TCLSH} charconv.tcl -p marc8 codetables.xml -o marc8.c
+    WORKING_DIRECTORY ${SOURCE_PATH}/src
+    LOGNAME tcl-marc8-${TARGET_TRIPLET}-rel
+)
+
+vcpkg_execute_required_process(
+    COMMAND ${TCLSH} charconv.tcl -p marc8r codetables.xml -o marc8r.c
+    WORKING_DIRECTORY ${SOURCE_PATH}/src
+    LOGNAME tcl-marc8r-${TARGET_TRIPLET}-rel
+)
+
+vcpkg_execute_required_process(
+    COMMAND ${TCLSH} charconv.tcl -p ico5426 codetables.xml -o ico5426.c
+    WORKING_DIRECTORY ${SOURCE_PATH}/src
+    LOGNAME tcl-ico5426-${TARGET_TRIPLET}-rel
+)
+
+vcpkg_find_acquire_program(BISON)
+
+vcpkg_execute_required_process(
+    COMMAND ${BISON} -y -p cql_ -o cql.c cql.y
+    WORKING_DIRECTORY ${SOURCE_PATH}/src
+    LOGNAME bison-ext-${TARGET_TRIPLET}-rel
 )
 
 vcpkg_configure_cmake(
